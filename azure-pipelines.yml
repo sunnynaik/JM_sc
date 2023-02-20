@@ -20,10 +20,10 @@ steps:
   displayName: 'Run Perf Analyzer'
   inputs:
     jmxSource: sourceCode
-    jmxsourceRunFilePath: 'sunnynaik/JM_sc/FAD_MountSinai_test_v1.jmx'
+    jmxsourceRunFilePath: 'FAD_MountSinai_test_v1.jmx'
     jmxPropertySource: none
     jmxInputFilesSource: sourceCode
-    jmxInputFolderSourcePath: 'sunnynaik/JM_sc/inp'
+    jmxInputFolderSourcePath: 'inp'
     publishResultsToBuildArtifact: true
     failPipelineIfJMeterFails: true
     maxFailureCountForJMeter: 5
