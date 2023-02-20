@@ -20,17 +20,17 @@ steps:
   displayName: 'Run Perf Analyzer'
   inputs:
     jmxSource: sourceCode
-    jmxsourceRunFilePath: '$(System.DefaultWorkingDirectory)/FAD_MountSinai_test_v1.jmx'
+    jmxsourceRunFilePath: 'FAD_MountSinai_test_v1.jmx'
     jmxPropertySource: none
     jmxInputFilesSource: sourceCode
-    jmxInputFolderSourcePath: '$(System.DefaultWorkingDirectory)/inp'
+    jmxInputFolderSourcePath: 'inp'
     publishResultsToBuildArtifact: true
     failPipelineIfJMeterFails: true
     maxFailureCountForJMeter: 5
     copyResultToAzureBlobStorage: true
     azureSubscription: 'PSL013874_GEMS Maverick_REQ000000970163 (9f21dc7d-3c20-41cb-b2f4-9e333b497800)'
     storage: 'jm01'
-    BlobPrefix: '<Your Release Prefix>/Release_$(Release.ReleaseId)'
+    BlobPrefix: 'web1'
     outputStorageUri: 'https://jm01.z29.web.core.windows.net/'
 
 
