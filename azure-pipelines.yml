@@ -15,6 +15,31 @@ steps:
   
 - script: ls
 
+- 
+- task: perfanalyzer@1
+  inputs:
+    jmxSource: 'sourceCode'
+    jmxsourceRunFilePath: '$(System.DefaultWorkingDirectory)/FAD_MountSinai_test_v1.jmx'
+    jmxPropertySource: 'none'
+    jmxInputFilesSource: 'sourceCode'
+    jmxInputFolderSourcePath: '$(System.DefaultWorkingDirectory)/inp'
+    publishResultsToBuildArtifact: true
+    artifactNameReport: 'PerfAnalyzerReport_$(Stage.StageDisplayName)'
+    artifactNameLog: 'PerfAnalyzerLogs_$(Stage.StageDisplayName)'
+    failPipelineIfJMeterFails: false
+    addCustomPluginsToJMeterLib: false
+    copyResultToAzureBlobStorage: true
+    azureSubscription: 'PSL013874_GEMS Maverick_REQ000000970163 (9f21dc7d-3c20-41cb-b2f4-9e333b497800)'
+    Destination: 'AzureBlob'
+    storage: 'jm01'
+    ContainerName: '$web'
+    outputStorageUri: 'https://jm01.z29.web.core.windows.net/'
+    jmeterURI: 'https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz'
+    extractedfolderNameforJMeterBinary: 'apache-jmeter-5.5'
+    jmeterCustomUnzippedFolderName: 'apache-jmeter-5.5'
+    jmeterLogFolder: 'CurrentLog_$(Stage.StageDisplayName)'
+    jmeterReportFolder: 'CurrentReport_$(Stage.StageDisplayName)'
+    telemetryDataCollection: true
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
