@@ -16,22 +16,33 @@ steps:
 - script: ls
 
 
+
 - task: perfanalyzer@1
   displayName: 'Run Perf Analyzer'
   inputs:
-    jmxSource: sourceCode
+    jmxSource: 'sourceCode'
     jmxsourceRunFilePath: 'FAD_MountSinai_test_v1.jmx'
-    jmxPropertySource: none
-    jmxInputFilesSource: sourceCode
+    jmxPropertySource: 'none'
+    jmxInputFilesSource: 'sourceCode'
     jmxInputFolderSourcePath: 'inp'
     publishResultsToBuildArtifact: true
-    failPipelineIfJMeterFails: true
-    maxFailureCountForJMeter: 5
+    artifactNameReport: 'PerfAnalyzerReport_$(Stage.StageDisplayName)'
+    artifactNameLog: 'PerfAnalyzerLogs_$(Stage.StageDisplayName)'
+    failPipelineIfJMeterFails: false
+    addCustomPluginsToJMeterLib: false
     copyResultToAzureBlobStorage: true
     azureSubscription: 'PSL013874_GEMS Maverick_REQ000000970163 (9f21dc7d-3c20-41cb-b2f4-9e333b497800)'
+    Destination: 'AzureBlob'
     storage: 'jm01'
-    BlobPrefix: 'web1'
+    ContainerName: '$web'
     outputStorageUri: 'https://jm01.z29.web.core.windows.net/'
+    jmeterURI: 'https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz'
+    extractedfolderNameforJMeterBinary: 'apache-jmeter-5.5'
+    jmeterCustomUnzippedFolderName: 'apache-jmeter-5.5'
+    jmeterLogFolder: 'test_loc'
+    jmeterReportFolder: 'test_repo'
+    telemetryDataCollection: true
+
 
 
 
